@@ -13,12 +13,6 @@ from .models.modeling import create_image_classifier
 import torchvision.models as models
 import torch.nn as nn
 
-# def merge(model_0, model_1, alpha=0.95):
-#     key_name = [k for k, v in model_0.named_parameters()]
-#     for i, (param_q, param_k) in enumerate(zip(model_0.parameters(), model_1.parameters())):
-#         param_k.data = param_k.data * alpha + param_q.data * (1 - alpha)
-#     return model_1
-
 
 def write2csv(i,map_v,map_t, existing_data):
 

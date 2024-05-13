@@ -5,7 +5,7 @@ import torch
 from torchvision import datasets
 from torch.utils.data import Dataset
 from .cifar10 import CIFAR10 as cifar10, CIFAR100 as cifar100
-from continuum.datasets import TinyImageNet200, ImageFolderDataset
+# from continuum.datasets import TinyImageNet200, ImageFolderDataset
 import sys
 from PIL import Image
 def underline_to_space(s):
