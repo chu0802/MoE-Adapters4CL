@@ -26,8 +26,6 @@ def write2csv(i,map_v,map_t, existing_data):
     existing_data.iloc[i+12] = map_v_combine
     existing_data.iloc[i] = map_t_combine
     return existing_data
-    # merged_data = pd.concat([existing_data, new_row], ignore_index=True)
-    # existing_data = existing_data.append(new_row, ignore_index=True)
 
 
 def main(args):
@@ -57,12 +55,8 @@ def main(args):
 
     else:
         if args.train_chooser:
-            if args.few_shot > 0:
-                print('----------------------train few-shot chooser----------------------')
-                chooser_of_few_shot = few_shot_AutoEncoder(args)# few shot chooser
-            else:
-                print('----------------------train full-shot chooser----------------------')
-                chooser = AutoEncoder(args)
+            print('----------------------train full-shot chooser----------------------')
+            chooser = AutoEncoder(args)
         else:
             print('----------------------finetune model----------------------')
             model = finetune(args)

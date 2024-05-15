@@ -145,7 +145,7 @@ def AutoEncoder(args):
         model_autoencoder = Autoencoder_list[args.task_id]
         pretrained_alexnet = models.alexnet(pretrained=True)
         for k, v in pretrained_alexnet.named_parameters():
-                v.requires_grad = False
+            v.requires_grad = False
         # Derives a feature extractor model from the Alexnet model
         feature_extractor = Alexnet_FE(pretrained_alexnet).to(device)
         print('The number of Total Trainable Parameters------------------:',

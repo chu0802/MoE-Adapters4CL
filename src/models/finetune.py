@@ -37,38 +37,7 @@ def finetune(args):
     # print(dataset)
     # number of iterations
 
-    if args.few_shot > 0:
-        print('=====few-shot======')
-        # few-shot
-        few_shot_data = {} # create few_shot data
-
-        for images, labels in dataset.train_loader:
-            for image, label in zip(images, labels):
-                label = label.item()
-                if label not in few_shot_data:
-                    few_shot_data[label] = []
-                if len(few_shot_data[label]) < args.few_shot:
-                    few_shot_data[label].append(image)
-
-        # create data_iter
-        few_shot_images = []
-        few_shot_labels = []
-
-        for label, images in few_shot_data.items():
-            few_shot_images.extend(images)
-            few_shot_labels.extend([label] * len(images))
-
-        few_shot_images = torch.stack(few_shot_images)
-        few_shot_labels = torch.tensor(few_shot_labels)
-
-        few_shot_dataset = torch.utils.data.TensorDataset(few_shot_images, few_shot_labels)
-        few_shot_data_loader = DataLoader(few_shot_dataset, batch_size=args.batch_size, shuffle=True)
-        print(len(few_shot_data_loader))
-
-    if args.few_shot > 0:
-        num_batches = len(few_shot_data_loader)
-    else:  # full_shot
-        num_batches = len(dataset.train_loader)
+    num_batches = len(dataset.train_loader)
     if args.epochs is not None: # # False
         total_iterations = args.epochs * num_batches
     else:
